@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>2017 你的关键词</title>
+		<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<h1>请输入你的名字</h1>
+		<input type="text" class="form-control" name="name" data-bv-notempty data-bv-notempty-message="名字不能为空" id="name" placeholder="请输入名字" autofocus="autofocus">
+		<button id="query" class="btn btn-primary btn-lg btn-block">查询</button>
+
+		<p id="keywords" style="font-size: larger;"></p>
+
+		<script>
+			$('document').ready(function() {
+				$('#query').click(function() {
+					query();
+				});
+			});
+
+			function query() {
+				var name = $('#name').val();
+				if(name == '') {
+					alert('请输入你的名字！！');
+					window.refresh();
+				} else {
+					//设置查询按钮不可点击
+					$('#query').attr("disabled", true); 
+					//使用随机数+数组实现关键词显示
+					var chars = ['文明', '和谐', '爱国', '友善', '敬业', '诚信', '富强', '赚大钱', '勤奋', '自由'];
+					var num = Math.random() * 10;
+					var count = Math.floor(num);
+					var word = chars[count];
+					$('#keywords').text("2017年 "+name+" 的关键词是：" + word);
+				}
+			}
+		</script>
+	</body>
+
+</html>
