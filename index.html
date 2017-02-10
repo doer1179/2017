@@ -3,19 +3,59 @@
 
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 		<title>2017 你的关键词</title>
-		<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
 		<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	</head>
-
+	<style>
+		body{
+			background-image: url("http://pic.qiantucdn.com/58pic/16/99/01/23X58PICRpW_1024.jpg");
+			text-align:center;
+		} 
+		.word{
+			margin:0 auto;
+		}
+		.keywords{
+			font-family: "微软雅黑";
+			font-size: 100px;
+			color: cornflowerblue;
+			
+		}
+		.title h1{
+			font-size: 100px;
+			font-family: "微软雅黑";
+			color: limegreen;
+		}
+		.btn-query{
+			margin-top: 10%;
+			margin-bottom: 5%;
+			border: 0;
+			width: 40%;
+			height: 20%;
+			font-family: "微软雅黑";
+			font-size: 60px;
+			background-color: chartreuse;
+		}
+		.name-message{
+			font-family: "微软雅黑";
+			font-size: 30px;
+			color: darkorange;
+		}
+	</style>
 	<body>
-		<h1>请输入你的名字</h1>
-		<input type="text" class="form-control" name="name" data-bv-notempty data-bv-notempty-message="名字不能为空" id="name" placeholder="请输入名字" autofocus="autofocus">
-		<button id="query" class="btn btn-primary btn-lg btn-block">查询</button>
-
-		<p id="keywords" style="font-size: larger;"></p>
-
+		<div class="total">
+			<div class="title"> <h1>请输入你的名字</h1> </div>
+			<div class="input-div">
+				<input type="text"  style="width:60%;height:20%;padding-bottom: 5%;padding-top: 5%;font-size: 50px" class="name-input" required="required" name="name" id="name" placeholder="请输入名字" autofocus="autofocus">
+			</div>
+			<button id="query" class="btn-query">查询</button>
+			<div class="word">
+			<p id="withName" class="name-message"></p>
+			<span id="keywords" class="keywords"></span>
+			</div>
+		</div>
 		<script>
 			$('document').ready(function() {
 				$('#query').click(function() {
@@ -30,13 +70,14 @@
 					window.refresh();
 				} else {
 					//设置查询按钮不可点击
-					$('#query').attr("disabled", true); 
+					$('#query').attr("disabled", true);
 					//使用随机数+数组实现关键词显示
 					var chars = ['文明', '和谐', '爱国', '友善', '敬业', '诚信', '富强', '赚大钱', '勤奋', '自由'];
 					var num = Math.random() * 10;
 					var count = Math.floor(num);
 					var word = chars[count];
-					$('#keywords').text("2017年 "+name+" 的关键词是：" + word);
+					$('#withName').text("2017年 " + name + " 的关键词是");
+					$('#keywords').text(word);
 				}
 			}
 		</script>
